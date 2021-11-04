@@ -16,8 +16,13 @@ import tableauserverclient as TSC
 gauth = GoogleAuth()           
 drive = GoogleDrive(gauth)
 
-server = TSC.Server('https://prod-useast-b.online.tableau.com', use_server_version=True)
-tableau_auth = TSC.PersonalAccessTokenAuth('streamlit-app-testing','2Qkrwe2XTXScKZEkOFr47Q==:aebWT5tlM4SKwtioGVwHVVodn5XHsOo5', 'thisisatestsite')
+server = TSC.Server(st.secrets["tableau"]["server_url"], use_server_version=True)
+tableau_auth = TSC.PersonalAccessTokenAuth(
+    st.secrets["tableau"]["token_name"],
+    st.secrets["tableau"]["personal_access_token"],
+    st.secrets["tableau"]["site_id"],
+)
+
 server.auth.sign_in_with_personal_access_token(tableau_auth)
 
 st.set_page_config(page_title='Test page')
