@@ -19,7 +19,7 @@ drive = GoogleDrive(gauth)
 server = TSC.Server(st.secrets["tableau"]["server_url"], use_server_version=True)
 tableau_auth = TSC.PersonalAccessTokenAuth(
     st.secrets["tableau"]["token_name"],
-    st.secrets["tableau"]["personal_access_token"],
+    st.secrets["tableau"]["token_secret"],
     st.secrets["tableau"]["site_id"],
 )
 
